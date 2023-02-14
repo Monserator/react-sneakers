@@ -46,11 +46,14 @@ function App() {
 
     const onAddToCart = async (obj) => {
         try {
-            const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id))
+            // const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id)) Рабочий
+            const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.parentId));
             // console.log(findItem)
             if (findItem) {
+                // setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.id))); Рабочий
                 setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.id)));
-                await axios.delete(`https://63767ed4b5f0e1eb850d515b.mockapi.io/cart/${obj.id}`);
+                // await axios.delete(`https://63767ed4b5f0e1eb850d515b.mockapi.io/cart/${obj.id}`); рабочий
+                await axios.delete(`https://63767ed4b5f0e1eb850d515b.mockapi.io/cart/${findItem.id}`);
             } else {
                 setCartItems(prev => [...prev, obj]);
                 const {data} = await axios.post('https://63767ed4b5f0e1eb850d515b.mockapi.io/cart', obj);
