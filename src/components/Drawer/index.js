@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from "axios";
 
-import Info from "./Info";
-import { useCart } from '../hooks/useCart';
+import Info from "../Info";
+import { useCart } from '../../hooks/useCart';
+
+import styles from "./Drawer.module.scss"
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-function Drawer({ onClose, onRemove, items = [] }) {
+function Drawer({ onClose, onRemove, items = [], opened  }) {
 
     const {cartItems, setCartItems, totalPrice} = useCart();
     const [isOrderComplete, setIsOrderComplete] = React.useState(false)
@@ -35,8 +37,8 @@ function Drawer({ onClose, onRemove, items = [] }) {
 
 
     return (
-        <div className="overlay">
-            <div className="drawer d-flex ">
+        <div className={`${styles.overlay} ${opened ? styles.overlayVisible : '' }`}>
+            <div className={` ${styles.drawer} d-flex `}>
                 <h2 className="mb-30 d-flex justify-between">Корзина<img onClick={onClose} className="removeBtn cu-p" src="/img/btn-remove.svg" alt="Close" /></h2>
 
 
@@ -55,7 +57,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
                                 </div>
                             ))}
                         </div>
-                        <div className="cartTotalBlock">
+                        <div className={styles.cartTotalBlock}>
                             <ul>
                                 <li>
                                     <span>Итого:</span>
