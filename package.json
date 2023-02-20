@@ -2,7 +2,6 @@
   "name": "sneakers",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://monserator.github.io/react-sneakers/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -11,6 +10,7 @@
     "gh-pages": "^5.0.0",
     "macro-css": "^1.0.5",
     "react": "^18.2.0",
+    "react-content-loader": "^6.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
